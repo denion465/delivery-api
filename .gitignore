@@ -1,5 +1,6 @@
 *.vscode
 *target
+*.apt_generated
 *.settings
 *.project
 *.classpath
