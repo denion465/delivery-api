@@ -13,8 +13,6 @@ import backend.deliveryapi.domain.model.Cozinha;
 import backend.deliveryapi.domain.model.Restaurante;
 import backend.deliveryapi.domain.repository.CozinhaRepository;
 import backend.deliveryapi.domain.repository.RestauranteRepository;
-import backend.deliveryapi.infrastructure.repository.spec.RestauranteComFreteGratisSpec;
-import backend.deliveryapi.infrastructure.repository.spec.RestauranteComNomeSemelhanteSpec;
 
 @RestController
 @RequestMapping("/teste")
@@ -71,10 +69,7 @@ public class TesteController {
 
   @GetMapping("/restaurantes/com-frete-gratis")
   public List<Restaurante> restaurantesComFreteFratis(String nome) {
-    var comFreteGratis = new RestauranteComFreteGratisSpec();
-    var comNomeSemelhante = new RestauranteComNomeSemelhanteSpec(nome);
 
-    return restauranteRepository.findAll(comFreteGratis.and(comNomeSemelhante));
+    return restauranteRepository.findComFreteGratis(nome);
   }
-
 }
